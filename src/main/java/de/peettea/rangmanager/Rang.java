@@ -21,7 +21,5 @@ public class Rang {
         this.weight = group.getWeight().getAsInt();
         this.prefix = group.getCachedData().getMetaData().getPrefix();
         this.color = ChatColor.valueOf(group.getCachedData().getMetaData().getMetaValue("color"));
-        System.out.println("HAllO");
-        System.out.println("Welt");
     }
 }
