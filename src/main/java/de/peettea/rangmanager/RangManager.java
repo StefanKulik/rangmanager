@@ -83,6 +83,9 @@ public class RangManager {
     public Rang findPlayerRang(Player player) {
         User user = api.getUserManager().getUser(player.getUniqueId());
         Group group = api.getGroupManager().getGroup(user.getPrimaryGroup());
+        if(player.isOp()) {
+            group = api.getGroupManager().getGroup("owner");
+        }
         return new Rang(group);
     }
 }
