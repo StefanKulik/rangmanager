@@ -35,7 +35,7 @@ public class RangManager {
         user.setPrimaryGroup(group.getName());
 
         InheritanceNode deleteNode = InheritanceNode.builder(oldPrimaryGroup.getName()).value(true).build();
-        if(user.data().contains(deleteNode, NodeEqualityPredicate.EXACT).asBoolean()) {
+        if (user.data().contains(deleteNode, NodeEqualityPredicate.EXACT).asBoolean()) {
             user.data().remove(deleteNode);
         }
 
@@ -83,9 +83,10 @@ public class RangManager {
     public Rang findPlayerRang(Player player) {
         User user = api.getUserManager().getUser(player.getUniqueId());
         Group group = api.getGroupManager().getGroup(user.getPrimaryGroup());
-        if(player.isOp()) {
+        if (player.isOp()) {
             group = api.getGroupManager().getGroup("owner");
         }
+        if (group == null) throw new NullPointerException("Group not found");
         return new Rang(group);
     }
 }
